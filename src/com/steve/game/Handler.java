@@ -9,12 +9,13 @@ import com.steve.entity.mob.mobs.Man;
 import com.steve.utility.ImageLoader;
 import com.steve.worldgen.Tile;
 import com.steve.worldgen.ore.Ore;
+import com.steve.worldgen.tiles.TileGrass;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Handler {
-    public final int size = 200;
+    public final int size = 100;
 
     private ArrayList<Entity> entityList = new ArrayList<>();
     private ArrayList<Mob> mobList = new ArrayList<>();
@@ -31,9 +32,10 @@ public class Handler {
         addEntity(new Man(300, 300));
         for (int i = 0; i < 3; i++)
             addEntity(new Fish_test(300, 300));
-       /* for (int i = 0; i < tiles.length; i++)
-            for (int j = 0; j < tiles.length; j++)
-                addTile(new TileGrass(i, j));*/
+        for (int i = 0; i < tiles.length; i++)
+            for (int j = 0; j < tiles.length; j++) {
+                addTile(new TileGrass(i, j));
+            }
         addOrePatch(30, 30, 100000, 3);
         addItem(new Item(300, 300, "test", ImageLoader.getImgByID("itemtemplate")));
     }
@@ -127,6 +129,6 @@ public class Handler {
     }
 
     public boolean onScreen(int x, int y) {
-        return (x < 1200) && (x > -20) && (y < 675) && (y > -20);
+        return (x < 1200) && (x > -32) && (y < 675) && (y > -32);
     }
 }

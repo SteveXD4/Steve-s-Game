@@ -7,14 +7,13 @@ import java.awt.image.BufferedImage;
 
 public class Tile {
 
-    private Vector2i vector2i;
-    private Rectangle rect;
-    private BufferedImage sprite;
+    protected Vector2i vector2i;
+    protected Rectangle rect;
+    protected BufferedImage sprite;
 
-    public Tile(int x, int y, BufferedImage sprite) {
+    public Tile(int x, int y) {
         this.vector2i = new Vector2i(x * 16, y * 16);
         this.rect = new Rectangle(vector2i.getX(), vector2i.getY(), 16, 16);
-        this.sprite = sprite;
     }
 
     public void transform(int ax, int ay) {

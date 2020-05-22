@@ -41,7 +41,8 @@ public class ImageLoader {
         new ImageLoader("man_standing", "/Sprites/man/man_standing.png");
         new ImageLoader("man_walking_f1", "/Sprites/man/man_walking_f1.png");
         new ImageLoader("man_walking_f2", "/Sprites/man/man_walking_f2.png");
-        new ImageLoader("Tile_Grass", "/Sprites/tiles/ground/Tile_grass.png");
+        new ImageLoader("Tile_Grass_f1", "/Sprites/tiles/ground/grass/Tile_grass_f1.png");
+        new ImageLoader("Tile_Grass_f2", "/Sprites/tiles/ground/grass/Tile_grass_f2.png");
         {//ores
             {//ore size 1
                 new ImageLoader("iron_ore_s1_a1", "/Sprites/tiles/ore/iron ore/size 1/iron_ore_s1_a1.png");

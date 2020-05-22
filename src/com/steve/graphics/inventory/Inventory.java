@@ -22,6 +22,7 @@ public class Inventory {
         IsOpen = true;
         Item item = new Item(0, 0, "test", ImageLoader.getImgByID("itemtemplate"));
         slots[0][0] = new ItemSlot(new ItemStack(item, 64));
+        slots[0][1] = new ItemSlot(new ItemStack(item, 64));
     }
 
     int timer = 0;
@@ -49,18 +50,17 @@ public class Inventory {
             for (int i = 0; i < 250; i += 50)
                 g.fillRect(0, i, 300, 5);
 
-
             for (int i = 0; i < 6; i++)
                 for (int j = 0; j < 4; j++)
                     if (slots[i][j] != null) {
                         BufferedImage sprite = slots[i][j].getStack().getItem().getSprite();
                         int x = slots[i][j].getStack().getItem().getX();
                         int y = slots[i][j].getStack().getItem().getY();
-                        int w = sprite.getWidth();
-                        int h = sprite.getHeight();
+                        int w = sprite.getWidth() * 4;
+                        int h = sprite.getHeight() * 4;
                         BufferedImage after = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
                         AffineTransform at = new AffineTransform();
-                        at.scale(2.0, 2.0);
+                        at.scale(4.0, 4.0);
                         AffineTransformOp scaleOp = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
                         after = scaleOp.filter(sprite, after);
 
