@@ -21,7 +21,7 @@ public class MediaPlayer {
 
     private void load() {
         new MediaPlayer("Hit_Hurt3", "/Sounds/Hit_Hurt3.mp3");
-        new MediaPlayer("Randomize8", "/Sounds/Randomize8.mp3");
+        //new MediaPlayer("Randomize8", "/Sounds/Randomize8.mp3");
     }
 
     public MediaPlayer(String ID, String path) {

@@ -15,7 +15,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Handler {
-    public final int size = 100;
+    public final int size = 600;
 
     private ArrayList<Entity> entityList = new ArrayList<>();
     private ArrayList<Mob> mobList = new ArrayList<>();

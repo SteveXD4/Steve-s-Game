@@ -41,30 +41,25 @@ public class Inventory {
 
     public void render(Graphics g, Graphics2D g2D) {
         if (IsOpen) {
-            g.setColor(new Color(169, 169, 169, 100));
-            g.fillRect(0, 0, 300, 200);
 
-            g.setColor(Color.BLUE);
-            for (int i = 0; i < 350; i += 50)
-                g.fillRect(i, 0, 5, 200);
-            for (int i = 0; i < 250; i += 50)
-                g.fillRect(0, i, 300, 5);
+            g.drawImage(ImageLoader.getImgByID("inventory"), 0, 0, null);
 
             for (int i = 0; i < 6; i++)
                 for (int j = 0; j < 4; j++)
                     if (slots[i][j] != null) {
+                        double size = 5.0;
                         BufferedImage sprite = slots[i][j].getStack().getItem().getSprite();
                         int x = slots[i][j].getStack().getItem().getX();
                         int y = slots[i][j].getStack().getItem().getY();
-                        int w = sprite.getWidth() * 4;
-                        int h = sprite.getHeight() * 4;
+                        int w = sprite.getWidth() * (int) size;
+                        int h = sprite.getHeight() * (int) size;
                         BufferedImage after = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
                         AffineTransform at = new AffineTransform();
-                        at.scale(4.0, 4.0);
+                        at.scale(size, size);
                         AffineTransformOp scaleOp = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
                         after = scaleOp.filter(sprite, after);
 
-                        g.drawImage(after, x, y, null);
+                        g.drawImage(after, i * 16, j * 16, null);
                     }
         }
     }

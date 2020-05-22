@@ -1,7 +1,7 @@
 package com.steve.worldgen.tiles;
 
-import com.steve.worldgen.Tile;
 import com.steve.utility.ImageLoader;
+import com.steve.worldgen.Tile;
 
 import java.util.Random;
 
@@ -11,8 +11,7 @@ public class TileGrass extends Tile {
         super(x, y);
         if (new Random().nextBoolean())
             sprite = ImageLoader.getImgByID("Tile_Grass_f1");
-            //if (sprite == null)
-        else ImageLoader.getImgByID("Tile_Grass_f2");
-
+        else
+            sprite = ImageLoader.getImgByID("Tile_Grass_f2");
     }
 }
