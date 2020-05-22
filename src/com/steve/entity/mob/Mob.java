@@ -1,7 +1,7 @@
 package com.steve.entity.mob;
 
 import com.steve.entity.Entity;
-import com.steve.entity.mob.animation.Animation;
+import com.steve.utility.animation.Animation;
 import com.steve.utility.Vector2i;
 
 import java.awt.*;

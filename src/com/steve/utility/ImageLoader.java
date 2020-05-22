@@ -80,6 +80,12 @@ public class ImageLoader {
         {//temp
             new ImageLoader("inventory", "res/Inventory.png");
         }
+        {//decoration
+            new ImageLoader("tree_f1","res/sprites/decoration/trees/tree_f1.png");
+            new ImageLoader("tree_f2","res/sprites/decoration/trees/tree_f2.png");
+            new ImageLoader("tree_f3","res/sprites/decoration/trees/tree_f3.png");
+
+        }
 
     }
 

@@ -2,6 +2,8 @@ package com.steve.game;
 
 import com.steve.GameEngine;
 import com.steve.entity.Entity;
+import com.steve.entity.decoration.Decoration;
+import com.steve.entity.decoration.Tree;
 import com.steve.entity.item.Item;
 import com.steve.entity.mob.Mob;
 import com.steve.entity.mob.mobs.Fish_test;
@@ -20,6 +22,7 @@ public class Handler {
     private ArrayList<Entity> entityList = new ArrayList<>();
     private ArrayList<Mob> mobList = new ArrayList<>();
     private ArrayList<Item> itemList = new ArrayList<>();
+    private ArrayList<Decoration> decorationsList = new ArrayList<>();
     private Tile[][] tiles = new Tile[size][size];
     private Ore[][] ores = new Ore[size][size];
 
@@ -36,12 +39,16 @@ public class Handler {
             for (int j = 0; j < tiles.length; j++) {
                 addTile(new TileGrass(i, j));
             }
+        for (int i = 0; i < 4; i++)
+            for (int j = 0; j < 5; j++)
+                addEntity(new Tree(i, j));
         addOrePatch(30, 30, 100000, 3);
         addItem(new Item(300, 300, "test", ImageLoader.getImgByID("itemtemplate")));
     }
 
     public void addEntity(Entity e) {
         if (e instanceof Mob) mobList.add((Mob) e);
+        else if (e instanceof Decoration) decorationsList.add((Decoration) e);
         entityList.add(e);
     }
 
@@ -97,35 +104,33 @@ public class Handler {
         else if (engine.keyboard.getkey(39)) ax += -1;
         if (engine.keyboard.getkey(38)) ay += 1;
         else if (engine.keyboard.getkey(40)) ay += -1;
-        for (int i = 0; i < entityList.size(); i++)
-            entityList.get(i).transform(ax, ay);
-        for (int i = 0; i < tiles.length; i++)
+        for (Entity entity : entityList) entity.transform(ax, ay);
+        for (Tile[] tile : tiles)
             for (int j = 0; j < tiles.length; j++)
-                if (!(tiles[i][j] == null))
-                    tiles[i][j].transform(ax, ay);
-        for (int i = 0; i < ores.length; i++)
+                if (!(tile[j] == null))
+                    tile[j].transform(ax, ay);
+        for (Ore[] ore : ores)
             for (int j = 0; j < ores.length; j++)
-                if (!(ores[i][j] == null))
-                    ores[i][j].transform(ax, ay);
-        for (int i = 0; i < itemList.size(); i++)
-            itemList.get(i).transform(ax, ay);
+                if (!(ore[j] == null))
+                    ore[j].transform(ax, ay);
+        for (Item item : itemList) item.transform(ax, ay);
+        for (Decoration decoration:decorationsList)decoration.tick();
     }
 
 
     public void render(Graphics g, Graphics2D g2D) {
-        for (int i = 0; i < tiles.length; i++)
+        for (Tile[] tile : tiles)
             for (int j = 0; j < tiles.length; j++)
-                if (!(tiles[i][j] == null))
-                    if (onScreen(tiles[i][j].getX(), tiles[i][j].getY()))
-                        tiles[i][j].render(g, g2D);
-        for (int i = 0; i < ores.length; i++)
+                if (!(tile[j] == null))
+                    if (onScreen(tile[j].getX(), tile[j].getY()))
+                        tile[j].render(g, g2D);
+        for (Ore[] ore : ores)
             for (int j = 0; j < ores.length; j++)
-                if (!(ores[i][j] == null))
-                    ores[i][j].render(g, g2D);
-        for (int i = 0; i < mobList.size(); i++)
-            mobList.get(i).render(g, g2D);
-        for (int i = 0; i < itemList.size(); i++)
-            itemList.get(i).render(g, g2D);
+                if (!(ore[j] == null))
+                    ore[j].render(g, g2D);
+        for (Mob mob : mobList) mob.render(g, g2D);
+        for (Item item : itemList) item.render(g, g2D);
+        for (Decoration decoration : decorationsList) decoration.render(g, g2D);
     }
 
     public boolean onScreen(int x, int y) {

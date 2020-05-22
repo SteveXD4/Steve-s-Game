@@ -1,16 +1,16 @@
-package com.steve.entity.mob.animation;
+package com.steve.utility.animation;
 
 import com.steve.utility.ImageLoader;
 
 import java.awt.image.BufferedImage;
 
 public class Animation {
-    private BufferedImage[] imgs;
+    private final BufferedImage[] imgs;
     private BufferedImage current;
-    private int frame = 0, rate = 10, lentgh = -1, time = 0;
+    private int frame = 0, rate = 10, length = -1, time = 0;
 
     public Animation(int SIZE) {
-        lentgh = SIZE;
+        length = SIZE;
         imgs = new BufferedImage[SIZE];
     }
 
@@ -25,7 +25,7 @@ public class Animation {
     public void tick() {
         time++;
         if (time % rate == 0) {
-            if (frame >= lentgh - 1)
+            if (frame >= length - 1)
                 frame = 0;
             else
                 frame++;
@@ -62,6 +62,15 @@ public class Animation {
         animation.addImg(ImageLoader.getImgByID("man_standing"));
         animation.addImg(ImageLoader.getImgByID("man_walking_f1"));
         animation.addImg(ImageLoader.getImgByID("man_walking_f2"));
+        return animation;
+    }
+    public static Animation treeAnimation() {
+        Animation animation = new Animation(4);
+        animation.addImg(ImageLoader.getImgByID("tree_f1"));
+        animation.addImg(ImageLoader.getImgByID("tree_f2"));
+        animation.addImg(ImageLoader.getImgByID("tree_f3"));
+        animation.addImg(ImageLoader.getImgByID("tree_f2"));
+
         return animation;
     }
 }

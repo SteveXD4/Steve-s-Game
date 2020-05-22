@@ -28,6 +28,22 @@ public class Entity {
         return vector2i;
     }
 
+    public void SetX(int x) {
+        this.vector2i.setX(x);
+    }
+
+    public void SetY(int y) {
+        this.vector2i.setX(y);
+    }
+
+    public int getX() {
+        return this.vector2i.getX();
+    }
+
+    public int getY() {
+        return this.vector2i.getY();
+    }
+
     public void render(Graphics g, Graphics2D g2D) {
 
     }
